@@ -2,7 +2,7 @@
     "name": "faonni/module-multiflatshipping",
     "description": "MultiFlatShipping extension will create 5 flat rate shipping methods with different prices and conditions.",
     "type": "magento2-module",
-	"version": "beta",
+	"version": "2.0.1",
 	"license": [
 		"OSL-3.0"
 		],
