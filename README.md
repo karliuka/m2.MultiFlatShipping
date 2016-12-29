@@ -9,7 +9,7 @@ MultiFlatShipping extension will create 5 flat rate shipping methods with differ
 2. Enter following commands to install module:
 
     ```bash
-    composer require faonni/module-multiflatshipping
+    composer require faonni/module-shipping-multi-flat
     ```
    Wait while dependencies are updated.
 
