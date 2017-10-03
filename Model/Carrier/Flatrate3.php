@@ -8,14 +8,16 @@ namespace Faonni\MultiFlatShipping\Model\Carrier;
 
 use Magento\Quote\Model\Quote\Address\RateRequest;
 use Magento\Shipping\Model\Rate\Result;
+use Faonni\MultiFlatShipping\Model\Carrier\FlatrateAbstract;
 
 /**
- * Flat rate shipping model
+ * Flat Rate
  */
-class Flatrate3 
-	extends \Faonni\MultiFlatShipping\Model\Carrier\FlatrateAbstract
+class Flatrate3 extends FlatrateAbstract
 {
     /**
+     * Carrier's code
+     *
      * @var string
      */
     protected $_code = 'flatrate3';

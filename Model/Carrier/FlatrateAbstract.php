@@ -8,23 +8,26 @@ namespace Faonni\MultiFlatShipping\Model\Carrier;
 
 use Magento\Quote\Model\Quote\Address\RateRequest;
 use Magento\Shipping\Model\Rate\Result;
+use Magento\OfflineShipping\Model\Carrier\Flatrate;
 
 /**
- * Flat rate shipping model
+ * Abstract Flat Rate
  */
-class FlatrateAbstract 
-	extends \Magento\OfflineShipping\Model\Carrier\Flatrate
+class FlatrateAbstract extends Flatrate
 {
     /**
+     * Carrier's code
+     *
      * @var string
      */
     protected $_code = 'flatrate';
 
     /**
+     * Collect and get rates
+     *
      * @param RateRequest $request
-     * @return Result|bool
-     * @SuppressWarnings(PHPMD.CyclomaticComplexity)
-     * @SuppressWarnings(PHPMD.NPathComplexity)
+     * @return \Magento\Framework\DataObject|bool|null
+     * @api
      */
     public function collectRates(RateRequest $request)
     {
@@ -94,6 +97,8 @@ class FlatrateAbstract
     }
 
     /**
+     * Get allowed shipping methods
+     *
      * @return array
      */
     public function getAllowedMethods()
