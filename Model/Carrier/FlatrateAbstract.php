@@ -72,7 +72,6 @@ class FlatrateAbstract extends Flatrate
         }
 
         $shippingPrice = $this->getFinalPriceWithHandlingFee($shippingPrice);
-
         if ($shippingPrice !== false) {
             /** @var \Magento\Quote\Model\Quote\Address\RateResult\Method $method */
             $method = $this->_rateMethodFactory->create();
