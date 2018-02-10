@@ -55,7 +55,7 @@ class Uninstall implements UninstallInterface
      */
     private function removeConfig()
     {
-        $path = 'carriers/flatrate\_';
+        $path = 'carriers/flatrate_';
         /** @var \Magento\Config\Model\ResourceModel\Config\Data\Collection $collection */
         $collection = $this->_configCollectionFactory->create(); 
         $collection->addPathFilter($path);
