@@ -31,8 +31,6 @@ The corresponding version of the MultiFlatShipping will be installed automatical
 
 3. Copy the unzip content to the folder ({Magento root}/app/code/Faonni/MultiFlatShipping)
 
-4. Install [Smart Category Configurable](https://github.com/karliuka/m2.SmartCategoryConfigurable)
-
 ### Completion of installation
 
 1. Go to Magento2 root folder
