@@ -2,22 +2,22 @@
 <!--
 /**
  * Copyright © 2011-2018 Karliuka Vitalii(karliuka.vitalii@gmail.com)
- * 
+ *
  * See COPYING.txt for license details.
  */
 -->
-<config xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" 
+<config xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
 	xsi:noNamespaceSchemaLocation="urn:magento:module:Magento_Config:etc/system_file.xsd">
     <system>
         <section id="carriers">
 			<!-- include flatrate group -->
-			<include path="Faonni_MultiFlatShipping::system/flatrate.xml"/>			
+			<include path="Faonni_MultiFlatShipping::system/flatrate.xml"/>
 			<!-- include flatrate2 group -->
 			<include path="Faonni_MultiFlatShipping::system/flatrate2.xml"/>
 			<!-- include flatrate3 group -->
-			<include path="Faonni_MultiFlatShipping::system/flatrate3.xml"/>	
+			<include path="Faonni_MultiFlatShipping::system/flatrate3.xml"/>
 			<!-- include flatrate4 group -->
-			<include path="Faonni_MultiFlatShipping::system/flatrate4.xml"/>	
+			<include path="Faonni_MultiFlatShipping::system/flatrate4.xml"/>
 			<!-- include flatrate5 group -->
 			<include path="Faonni_MultiFlatShipping::system/flatrate5.xml"/>
         </section>

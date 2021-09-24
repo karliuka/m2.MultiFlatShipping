@@ -1,7 +1,7 @@
 # Magento2 MultiFlatShipping
 
 [![Total Downloads](https://poser.pugx.org/faonni/module-shipping-multi-flat/downloads)](https://packagist.org/packages/faonni/module-shipping-multi-flat)
-[![Latest Stable Version](https://poser.pugx.org/faonni/module-shipping-multi-flat/v/stable)](https://packagist.org/packages/faonni/module-shipping-multi-flat)	
+[![Latest Stable Version](https://poser.pugx.org/faonni/module-shipping-multi-flat/v/stable)](https://packagist.org/packages/faonni/module-shipping-multi-flat)
 
 MultiFlatShipping extension will create 5 flat rate shipping methods with different prices and conditions.
 
@@ -22,9 +22,9 @@ The corresponding version of the MultiFlatShipping will be installed automatical
     composer require faonni/module-shipping-multi-flat
     ```
    Wait while dependencies are updated.
-   
+
 #### Manual Installation
-   
+
 1. Create a folder {Magento root}/app/code/Faonni/MultiFlatShipping
 
 2. Download the corresponding [latest version](https://github.com/karliuka/m2.MultiFlatShipping/releases)
@@ -59,9 +59,9 @@ This works only with modules defined as Composer packages.
 
     ```bash
     php bin/magento module:uninstall -r Faonni_MultiFlatShipping
-  
+
 #### Remove Extension
-    
+
 1. Go to Magento2 root folder
 
 2. Enter following commands to remove:

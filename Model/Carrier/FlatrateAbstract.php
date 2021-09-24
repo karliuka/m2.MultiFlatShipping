@@ -1,7 +1,7 @@
 <?php
 /**
  * Copyright © 2011-2018 Karliuka Vitalii(karliuka.vitalii@gmail.com)
- * 
+ *
  * See COPYING.txt for license details.
  */
 namespace Faonni\MultiFlatShipping\Model\Carrier;
@@ -19,6 +19,8 @@ use Psr\Log\LoggerInterface;
 
 /**
  * Abstract Flat Rate
+ *
+ * @method FlatrateAbstract setFreeBoxes(int $freeBoxes)
  */
 class FlatrateAbstract extends AbstractCarrier implements CarrierInterface
 {
@@ -28,7 +30,7 @@ class FlatrateAbstract extends AbstractCarrier implements CarrierInterface
      * @var string
      */
     protected $_code = 'flatrate';
-    
+
     /**
      * Fixed Flag
      *
@@ -37,36 +39,30 @@ class FlatrateAbstract extends AbstractCarrier implements CarrierInterface
     protected $_isFixed = true;
 
     /**
-     * Result Factory
-     *
-     * @var \Magento\Shipping\Model\Rate\ResultFactory
+     * @var ResultFactory
      */
     protected $_rateResultFactory;
 
     /**
-     * Method Factory
-     *
-     * @var \Magento\Quote\Model\Quote\Address\RateResult\MethodFactory
+     * @var MethodFactory
      */
     protected $_rateMethodFactory;
 
     /**
-     * Item Price Calculator
-     *
-     * @var \Magento\OfflineShipping\Model\Carrier\Flatrate\ItemPriceCalculator
+     * @var ItemPriceCalculator
      */
-    private $itemPriceCalculator;  
-    
+    private $itemPriceCalculator;
+
     /**
      * Initialize Carrier
-     * 
+     *
      * @param ScopeConfigInterface $scopeConfig
      * @param ErrorFactory $rateErrorFactory
      * @param LoggerInterface $logger
      * @param ResultFactory $rateResultFactory
      * @param MethodFactory $rateMethodFactory
      * @param ItemPriceCalculator $itemPriceCalculator
-     * @param array $data
+     * @param mixed[] $data
      */
     public function __construct(
         ScopeConfigInterface $scopeConfig,
@@ -80,20 +76,20 @@ class FlatrateAbstract extends AbstractCarrier implements CarrierInterface
         $this->_rateResultFactory = $rateResultFactory;
         $this->_rateMethodFactory = $rateMethodFactory;
         $this->itemPriceCalculator = $itemPriceCalculator;
-        
+
         parent::__construct(
-            $scopeConfig, 
-            $rateErrorFactory, 
-            $logger, 
+            $scopeConfig,
+            $rateErrorFactory,
+            $logger,
             $data
         );
-    }    
+    }
 
     /**
-     * Collect and get Rates
+     * Collect and get rates
      *
      * @param RateRequest $request
-     * @return \Magento\Framework\DataObject|bool|null
+     * @return Result|bool
      * @api
      */
     public function collectRates(RateRequest $request)
@@ -110,17 +106,17 @@ class FlatrateAbstract extends AbstractCarrier implements CarrierInterface
 
         $shippingPrice = $this->getShippingPrice($request, $freeBoxes);
 
-        if ($shippingPrice !== false) {
+        if (true !== is_bool($shippingPrice)) {
             $method = $this->createResultMethod($shippingPrice);
             $result->append($method);
         }
 
         return $result;
     }
-    
+
     /**
      * Retrieve the FreeBoxes Count
-     * 
+     *
      * @param RateRequest $request
      * @return int
      */
@@ -142,10 +138,10 @@ class FlatrateAbstract extends AbstractCarrier implements CarrierInterface
         }
         return $freeBoxes;
     }
-    
+
     /**
      * Retrieve the FreeBoxes Count From Children
-     * 
+     *
      * @param mixed $item
      * @return mixed
      */
@@ -159,10 +155,10 @@ class FlatrateAbstract extends AbstractCarrier implements CarrierInterface
         }
         return $freeBoxes;
     }
-    
+
     /**
      * Retrieve the Shipping Price
-     * 
+     *
      * @param RateRequest $request
      * @param int $freeBoxes
      * @return bool|float
@@ -171,7 +167,7 @@ class FlatrateAbstract extends AbstractCarrier implements CarrierInterface
     {
         $shippingPrice = false;
 
-        $configPrice = $this->getConfigData('price');
+        $configPrice = (int)$this->getConfigData('price');
         if ($this->getConfigData('type') === 'O') {
             // per order
             $shippingPrice = $this->itemPriceCalculator->getShippingPricePerOrder($request, $configPrice, $freeBoxes);
@@ -180,17 +176,18 @@ class FlatrateAbstract extends AbstractCarrier implements CarrierInterface
             $shippingPrice = $this->itemPriceCalculator->getShippingPricePerItem($request, $configPrice, $freeBoxes);
         }
 
-        $shippingPrice = $this->getFinalPriceWithHandlingFee($shippingPrice);
-
-        if ($shippingPrice !== false && $request->getPackageQty() == $freeBoxes) {
-            $shippingPrice = '0.00';
+        if (false !== $shippingPrice) {
+            $shippingPrice = $this->getFinalPriceWithHandlingFee($shippingPrice);
+            if ($request->getPackageQty() == $freeBoxes) {
+                $shippingPrice = (float)'0.00';
+            }
         }
         return $shippingPrice;
     }
-    
+
     /**
      * Create ResultMethod
-     * 
+     *
      * @param int|float $shippingPrice
      * @return \Magento\Quote\Model\Quote\Address\RateResult\Method
      */
@@ -209,11 +206,11 @@ class FlatrateAbstract extends AbstractCarrier implements CarrierInterface
         $method->setCost($shippingPrice);
         return $method;
     }
-    
+
     /**
      * Get allowed shipping methods
      *
-     * @return array
+     * @return mixed[]
      */
     public function getAllowedMethods()
     {

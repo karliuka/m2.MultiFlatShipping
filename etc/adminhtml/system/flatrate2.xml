@@ -2,15 +2,15 @@
 <!--
 /**
  * Copyright © 2011-2018 Karliuka Vitalii(karliuka.vitalii@gmail.com)
- * 
+ *
  * See COPYING.txt for license details.
  */
 -->
-<include xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" 
+<include xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
 	xsi:noNamespaceSchemaLocation="urn:magento:module:Magento_Config:etc/system_include.xsd">
 	<!--
 	flatrate2 group
-	-->	            
+	-->
 	<group id="flatrate2" translate="label" type="text" sortOrder="52" showInDefault="1" showInWebsite="1" showInStore="1">
 		<label>Flat Rate 2</label>
 		<field id="active" translate="label" type="select" sortOrder="1" showInDefault="1" showInWebsite="1" showInStore="0">
@@ -21,47 +21,47 @@
 			<label>Title</label>
 			<depends>
 				<field id="active">1</field>
-			</depends>	                    
-		</field>                
+			</depends>
+		</field>
 		<field id="name" translate="label" type="text" sortOrder="3" showInDefault="1" showInWebsite="1" showInStore="1">
 			<label>Method Name</label>
 			<depends>
 				<field id="active">1</field>
-			</depends>	                    
+			</depends>
 		</field>
 		<field id="type" translate="label" type="select" sortOrder="4" showInDefault="1" showInWebsite="1" showInStore="0">
 			<label>Type</label>
 			<source_model>Magento\OfflineShipping\Model\Config\Source\Flatrate</source_model>
 			<depends>
 				<field id="active">1</field>
-			</depends>	                     
-		</field>                                
+			</depends>
+		</field>
 		<field id="price" translate="label" type="text" sortOrder="5" showInDefault="1" showInWebsite="1" showInStore="0">
 			<label>Price</label>
 			<validate>validate-number validate-zero-or-greater</validate>
 			<depends>
 				<field id="active">1</field>
-			</depends>	                    
+			</depends>
 		</field>
 		<field id="handling_type" translate="label" type="select" sortOrder="7" showInDefault="1" showInWebsite="1" showInStore="0">
 			<label>Calculate Handling Fee</label>
 			<source_model>Magento\Shipping\Model\Source\HandlingType</source_model>
 			<depends>
 				<field id="active">1</field>
-			</depends>	                    
+			</depends>
 		</field>
 		<field id="handling_fee" translate="label" type="text" sortOrder="8" showInDefault="1" showInWebsite="1" showInStore="0">
 			<label>Handling Fee</label>
 			<validate>validate-number validate-zero-or-greater</validate>
 			<depends>
 				<field id="active">1</field>
-			</depends>	                    
+			</depends>
 		</field>
 		<field id="specificerrmsg" translate="label" type="textarea" sortOrder="80" showInDefault="1" showInWebsite="1" showInStore="1">
 			<label>Displayed Error Message</label>
 			<depends>
 				<field id="active">1</field>
-			</depends>                    
+			</depends>
 		</field>
 		<field id="sallowspecific" translate="label" type="select" sortOrder="90" showInDefault="1" showInWebsite="1" showInStore="0">
 			<label>Ship to Applicable Countries</label>
@@ -69,14 +69,14 @@
 			<source_model>Magento\Shipping\Model\Config\Source\Allspecificcountries</source_model>
 			<depends>
 				<field id="active">1</field>
-			</depends>	                    
+			</depends>
 		</field>
 		<field id="specificcountry" translate="label" type="multiselect" sortOrder="91" showInDefault="1" showInWebsite="1" showInStore="0">
 			<label>Ship to Specific Countries</label>
 			<source_model>Magento\Directory\Model\Config\Source\Country</source_model>
 			<depends>
 				<field id="active">1</field>
-			</depends>	                    
+			</depends>
 			<can_be_empty>1</can_be_empty>
 		</field>
 		<field id="showmethod" translate="label" type="select" sortOrder="92" showInDefault="1" showInWebsite="1" showInStore="0">
@@ -84,13 +84,13 @@
 			<source_model>Magento\Config\Model\Config\Source\Yesno</source_model>
 			<depends>
 				<field id="active">1</field>
-			</depends>	                    
+			</depends>
 		</field>
 		<field id="sort_order" translate="label" type="text" sortOrder="100" showInDefault="1" showInWebsite="1" showInStore="0">
 			<label>Sort Order</label>
 			<depends>
 				<field id="active">1</field>
-			</depends>	                    
-		</field>                
-	</group> 
+			</depends>
+		</field>
+	</group>
 </include>
